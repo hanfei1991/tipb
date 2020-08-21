@@ -17,7 +17,7 @@ enum ExecType {
 	TypeTableScan = 0;
 	TypeIndexScan = 1;
 	TypeSelection = 2;
-	TypeAggregation = 3; // TODO: Rename it to hash aggregation after support stream aggregation in TiKV.
+	TypeAggregation = 3;
 	TypeTopN = 4;
 	TypeLimit = 5;
 	TypeStreamAgg = 6;
@@ -33,7 +33,7 @@ message Executor {
 	optional Aggregation aggregation = 5;
 	optional TopN topN = 6;
 	optional Limit limit = 7;
-	optional Aggregation stream_agg= 8;
+	optional TablePartition partition = 8;
 	optional Join join = 9;
 	optional string executor_id = 10;
 }
@@ -42,6 +42,10 @@ enum EngineType {
 	Local = 0;
 	TiKV = 1;
 	TiFlash = 2;
+}
+
+message TablePartition {
+        repeated TableScan tables = 1;
 }
 
 message TableScan {

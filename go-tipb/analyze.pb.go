@@ -31,6 +31,7 @@
 		ChecksumRequest
 		ChecksumResponse
 		Executor
+		TablePartition
 		TableScan
 		Join
 		IndexScan
